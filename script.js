@@ -1,23 +1,11 @@
-/* =============================================================
-   AKSHAY KUMAR PORTFOLIO v3 — CINEMATIC MOTION ENGINE
-   Particle field · Magnetic cursor · 3D card tilt · Morphing text
-   Scroll orchestration · Premium interactions
-   ============================================================= */
-
 'use strict';
 
-// ─────────────────────────────────────────────────────────────
-// 0. UTILITY HELPERS
-// ─────────────────────────────────────────────────────────────
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ─────────────────────────────────────────────────────────────
-// 1. MAGNETIC CURSOR
-// ─────────────────────────────────────────────────────────────
 ;(function initCursor() {
   if (reducedMotion || window.matchMedia('(hover: none)').matches) return;
 
@@ -47,24 +35,17 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
   }
   animateRing();
 
-  // Magnetic hover targets
   const magnets = $$('a, button, .project-card, .terminal-card, .stat-pill');
   magnets.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseenter', () => document.body.classList.remove('cursor-hover') || document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     el.addEventListener('mousedown',  () => document.body.classList.add('cursor-active'));
     el.addEventListener('mouseup',    () => document.body.classList.remove('cursor-active'));
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 2. DYNAMIC COPYRIGHT YEAR
-// ─────────────────────────────────────────────────────────────
 $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-// ─────────────────────────────────────────────────────────────
-// 3. THEME SWITCHER (Light / Dark)
-// ─────────────────────────────────────────────────────────────
 const themeToggle = $('#theme-toggle');
 const themeMeta   = $('meta[name="theme-color"]');
 
@@ -85,7 +66,6 @@ function applyTheme(theme) {
   }
 }
 
-// Detect preferred color scheme on first visit
 const saved = localStorage.getItem('portfolio_theme');
 const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 applyTheme(saved || preferred);
@@ -95,13 +75,10 @@ themeToggle?.addEventListener('click', () => {
   applyTheme(current === 'dark' ? 'light' : 'dark');
 });
 
-// ─────────────────────────────────────────────────────────────
-// 4. SCROLL PROGRESS BAR + BACK-TO-TOP RING
-// ─────────────────────────────────────────────────────────────
 const scrollProgress = $('#scroll-progress');
 const backToTopBtn   = $('#back-to-top');
 const progressCircle = $('#progress-circle');
-const C = 2 * Math.PI * 19; // 119.38
+const C = 2 * Math.PI * 19;
 
 function onScroll() {
   const scrollY    = window.scrollY;
@@ -126,9 +103,6 @@ backToTopBtn?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ─────────────────────────────────────────────────────────────
-// 5. MOBILE NAVIGATION
-// ─────────────────────────────────────────────────────────────
 ;(function initMobileNav() {
   const menuToggle = $('.menu-toggle');
   const siteNav    = $('#site-nav');
@@ -149,9 +123,6 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 6. SIDE TOC SCROLL SPY
-// ─────────────────────────────────────────────────────────────
 ;(function initScrollSpy() {
   const links    = $$('.side-toc-link');
   const sections = [
@@ -173,9 +144,6 @@ backToTopBtn?.addEventListener('click', () => {
   spy();
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 7. SCROLL REVEAL (INTERSECTION OBSERVER)
-// ─────────────────────────────────────────────────────────────
 ;(function initReveal() {
   const items = $$('.reveal');
   if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -193,9 +161,6 @@ backToTopBtn?.addEventListener('click', () => {
   items.forEach(el => obs.observe(el));
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 8. PARTICLE FIELD (HERO BACKGROUND)
-// ─────────────────────────────────────────────────────────────
 ;(function initParticles() {
   if (reducedMotion) return;
 
@@ -223,7 +188,6 @@ backToTopBtn?.addEventListener('click', () => {
   }, { passive: true });
   hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
 
-  // Color set — warm terracotta + muted ink dots
   const colors = ['rgba(184,90,63,0.5)', 'rgba(59,107,54,0.4)', 'rgba(180,170,150,0.3)'];
 
   class Particle {
@@ -242,11 +206,9 @@ backToTopBtn?.addEventListener('click', () => {
     }
     update() {
       this.life++;
-      // Fade in/out
       if (this.life < 40) this.a = lerp(this.a, this.ta, 0.1);
       else if (this.life > this.maxLife - 40) this.a = lerp(this.a, 0, 0.05);
 
-      // Mouse repulsion
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -256,7 +218,6 @@ backToTopBtn?.addEventListener('click', () => {
         this.vy += (dy / dist) * force * 0.4;
       }
 
-      // Damping
       this.vx *= 0.98;
       this.vy *= 0.98;
 
@@ -276,11 +237,9 @@ backToTopBtn?.addEventListener('click', () => {
     }
   }
 
-  // Create particles
   const N = Math.min(80, Math.floor(W * H / 8000));
   for (let i = 0; i < N; i++) particles.push(new Particle());
 
-  // Connection lines
   function drawConnections() {
     const MAX_DIST = 100;
     for (let i = 0; i < particles.length; i++) {
@@ -310,9 +269,6 @@ backToTopBtn?.addEventListener('click', () => {
   animate();
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 9. 3D CARD TILT ON HOVER
-// ─────────────────────────────────────────────────────────────
 ;(function initTilt() {
   if (reducedMotion || window.matchMedia('(hover: none)').matches) return;
 
@@ -323,12 +279,11 @@ backToTopBtn?.addEventListener('click', () => {
 
     card.addEventListener('mousemove', e => {
       const r   = card.getBoundingClientRect();
-      const x   = (e.clientX - r.left) / r.width  - 0.5;  // -0.5 to 0.5
+      const x   = (e.clientX - r.left) / r.width  - 0.5;
       const y   = (e.clientY - r.top)  / r.height - 0.5;
-      tx = y * -10;  // pitch
-      ty = x *  10;  // yaw
+      tx = y * -10;
+      ty = x *  10;
 
-      // Update spotlight CSS vars
       card.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
       card.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
     });
@@ -349,9 +304,6 @@ backToTopBtn?.addEventListener('click', () => {
   $$('.terminal-card, .project-card, .stat-pill').forEach(initCard);
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 10. HERO TERMINAL — TABS, RUN, COPY
-// ─────────────────────────────────────────────────────────────
 ;(function initTerminal() {
   const tabCodeBtn   = $('#tab-code-btn');
   const tabOutputBtn = $('#tab-output-btn');
@@ -374,7 +326,6 @@ backToTopBtn?.addEventListener('click', () => {
   tabCodeBtn?.addEventListener('click',   () => switchTab('code'));
   tabOutputBtn?.addEventListener('click', () => switchTab('output'));
 
-  // Copy
   copyBtn?.addEventListener('click', async () => {
     const code = paneCode?.querySelector('code')?.innerText || '';
     try {
@@ -387,10 +338,9 @@ backToTopBtn?.addEventListener('click', () => {
         if (txt)  txt.textContent  = 'Copy';
         if (icon) icon.textContent = '📋';
       }, 2000);
-    } catch { /* noop */ }
+    } catch {}
   });
 
-  // Run simulation with typed output
   runBtn?.addEventListener('click', () => {
     switchTab('output');
     if (!consoleOut) return;
@@ -427,9 +377,6 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 11. ANIMATED STAT COUNTERS
-// ─────────────────────────────────────────────────────────────
 ;(function initCounters() {
   const stats = $$('.stat-number');
   let done = false;
@@ -462,9 +409,6 @@ backToTopBtn?.addEventListener('click', () => {
   }
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 12. TECH STACK FILTER PILLS
-// ─────────────────────────────────────────────────────────────
 ;(function initTechFilter() {
   const pills = $$('.tech-filter-pill');
   const cards = $$('.project-card');
@@ -492,9 +436,6 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 13. INTELLIGAP SIMULATOR
-// ─────────────────────────────────────────────────────────────
 ;(function initSimulator() {
   const data = {
     ai: {
@@ -560,17 +501,11 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 14. HERO TEXT — STAGGERED WORD ENTRANCE
-// ─────────────────────────────────────────────────────────────
 ;(function initHeroWords() {
   if (reducedMotion) return;
   const h1 = $('.hero h1');
   if (!h1) return;
 
-  // Word-split the text nodes for entrance (non-destructive to em tags)
-  // Already animated via CSS @keyframes heroTitleReveal — no extra JS needed
-  // Just trigger a subtle shimmer on title hover
   h1.addEventListener('mouseenter', () => {
     h1.style.textShadow = '0 0 60px var(--glow)';
   });
@@ -579,9 +514,6 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 15. HEADER HIDE-ON-SCROLL (smart header)
-// ─────────────────────────────────────────────────────────────
 ;(function initSmartHeader() {
   const header = $('[data-header]');
   if (!header) return;
@@ -609,9 +541,6 @@ backToTopBtn?.addEventListener('click', () => {
   }, { passive: true });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 16. SECTION RULE GLOW (on section enter)
-// ─────────────────────────────────────────────────────────────
 ;(function initRuleGlow() {
   if (reducedMotion || !('IntersectionObserver' in window)) return;
   const rules = $$('.section-rule');
@@ -625,9 +554,6 @@ backToTopBtn?.addEventListener('click', () => {
   rules.forEach(r => obs.observe(r));
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 17. SPOTLIGHT ON PROJECT CARDS (mouse tracking)
-// ─────────────────────────────────────────────────────────────
 ;(function initSpotlight() {
   $$('.project-card, .terminal-card').forEach(card => {
     card.addEventListener('mousemove', e => {
@@ -642,9 +568,6 @@ backToTopBtn?.addEventListener('click', () => {
   });
 })();
 
-// ─────────────────────────────────────────────────────────────
-// 18. AMBIENT GLOW FOLLOWING MOUSE (hero section)
-// ─────────────────────────────────────────────────────────────
 ;(function initAmbientMouse() {
   if (reducedMotion) return;
   const hero = $('.hero');
