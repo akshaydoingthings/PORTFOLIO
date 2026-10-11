@@ -1,0 +1,11 @@
+{
+  "name": "akshay-kumar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Akshay Kumar's computer science student portfolio",
+  "scripts": {
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check script.js"
+  }
+}
