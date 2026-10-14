@@ -63,10 +63,6 @@
           <a href="https://github.com/akshaydoingthings" target="_blank" rel="noreferrer" class="nav-external">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
         <div class="header-actions">
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle visual theme" title="Toggle theme">
-            <span class="theme-toggle-icon" aria-hidden="true">☾</span>
-            <span class="theme-toggle-label">Ink</span>
-          </button>
           <a class="header-note" href="mailto:contact@akshaykumar.dev">Let's talk <span aria-hidden="true">↗</span></a>
         </div>
         <div class="scroll-progress-line" id="scroll-progress" aria-hidden="true"></div>
@@ -75,8 +71,108 @@
       <main id="top">
 
         <!-- HERO -->
-        <section class="hero section-pad" aria-labelledby="hero-title">
-          <div class="hero-copy reveal">
+        <section class="hero" aria-labelledby="hero-title">
+          <!-- Peaceful Animated Sky Backdrop -->
+          <div class="sky-container" aria-hidden="true">
+            <div class="sky-backdrop"></div>
+            <div class="sky-stars">
+              <span class="sky-star s1" style="top:14%;left:6%;--dur:4.2s;--del:0s;"></span>
+              <span class="sky-star s2" style="top:23%;left:16%;--dur:5.6s;--del:1.2s;"></span>
+              <span class="sky-star s3" style="top:9%;left:26%;--dur:3.9s;--del:0.5s;"></span>
+              <span class="sky-star s1" style="top:19%;left:36%;--dur:6.2s;--del:2.1s;"></span>
+              <span class="sky-star s2" style="top:32%;left:47%;--dur:4.8s;--del:1.8s;"></span>
+              <span class="sky-star s3" style="top:28%;left:58%;--dur:5.1s;--del:2.7s;"></span>
+              <span class="sky-star s1" style="top:11%;left:69%;--dur:4.7s;--del:0.9s;"></span>
+              <span class="sky-star s2" style="top:37%;left:79%;--dur:6.3s;--del:3.2s;"></span>
+              <span class="sky-star s1" style="top:7%;left:89%;--dur:3.5s;--del:1.4s;"></span>
+              <span class="sky-star s3" style="top:33%;left:95%;--dur:5.7s;--del:2.4s;"></span>
+              <span class="sky-star s2" style="top:16%;left:2%;--dur:4.9s;--del:1.6s;"></span>
+              <span class="sky-star s1" style="top:25%;left:21%;--dur:5.3s;--del:0.7s;"></span>
+              <span class="sky-star s3" style="top:18%;left:64%;--dur:4.4s;--del:2.2s;"></span>
+              <span class="sky-star s2" style="top:29%;left:84%;--dur:6.1s;--del:1.1s;"></span>
+            </div>
+            <div class="sky-horizon-glow"></div>
+
+            <!-- Parallax Continuous Cloud Layers -->
+            <div class="sky-clouds-layer sky-clouds-far">
+              <div class="sky-clouds-track">
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-far-1" viewBox="0 0 600 180" fill="none"><path d="M50 140 C80 90, 160 85, 200 110 C240 70, 340 75, 380 120 C420 85, 500 95, 540 140 C560 145, 580 155, 570 170 C560 180, 50 180, 30 170 C20 155, 35 145, 50 140 Z" fill="url(#farGlow1)"/></svg>
+                  <svg class="cloud-cluster c-far-2" viewBox="0 0 520 160" fill="none"><path d="M40 120 C70 80, 150 70, 190 95 C230 65, 320 60, 360 105 C400 80, 470 90, 490 130 C500 150, 40 160, 20 140 C15 130, 25 125, 40 120 Z" fill="url(#farGlow2)"/></svg>
+                </div>
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-far-1" viewBox="0 0 600 180" fill="none"><path d="M50 140 C80 90, 160 85, 200 110 C240 70, 340 75, 380 120 C420 85, 500 95, 540 140 C560 145, 580 155, 570 170 C560 180, 50 180, 30 170 C20 155, 35 145, 50 140 Z" fill="url(#farGlow1)"/></svg>
+                  <svg class="cloud-cluster c-far-2" viewBox="0 0 520 160" fill="none"><path d="M40 120 C70 80, 150 70, 190 95 C230 65, 320 60, 360 105 C400 80, 470 90, 490 130 C500 150, 40 160, 20 140 C15 130, 25 125, 40 120 Z" fill="url(#farGlow2)"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="sky-clouds-layer sky-clouds-mid">
+              <div class="sky-clouds-track">
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-mid-1" viewBox="0 0 700 220" fill="none"><path d="M60 160 C90 110, 150 105, 190 125 C230 80, 320 70, 380 105 C430 60, 530 65, 580 115 C620 90, 680 115, 690 165 C695 195, 50 205, 30 185 C20 170, 40 162, 60 160 Z" fill="url(#midGlow1)"/></svg>
+                  <svg class="cloud-cluster c-mid-2" viewBox="0 0 640 200" fill="none"><path d="M50 150 C80 100, 160 90, 210 120 C260 75, 350 70, 400 110 C440 75, 530 85, 570 130 C610 110, 650 135, 640 175 C620 200, 40 200, 20 175 C10 160, 30 152, 50 150 Z" fill="url(#midGlow2)"/></svg>
+                </div>
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-mid-1" viewBox="0 0 700 220" fill="none"><path d="M60 160 C90 110, 150 105, 190 125 C230 80, 320 70, 380 105 C430 60, 530 65, 580 115 C620 90, 680 115, 690 165 C695 195, 50 205, 30 185 C20 170, 40 162, 60 160 Z" fill="url(#midGlow1)"/></svg>
+                  <svg class="cloud-cluster c-mid-2" viewBox="0 0 640 200" fill="none"><path d="M50 150 C80 100, 160 90, 210 120 C260 75, 350 70, 400 110 C440 75, 530 85, 570 130 C610 110, 650 135, 640 175 C620 200, 40 200, 20 175 C10 160, 30 152, 50 150 Z" fill="url(#midGlow2)"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="sky-clouds-layer sky-clouds-near">
+              <div class="sky-clouds-track">
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-near-1" viewBox="0 0 800 240" fill="none"><path d="M80 190 C120 130, 210 120, 270 150 C330 90, 460 85, 530 135 C590 85, 710 95, 770 160 C800 200, 60 230, 40 210 C30 195, 55 190, 80 190 Z" fill="url(#nearGlow1)"/></svg>
+                </div>
+                <div class="sky-clouds-set">
+                  <svg class="cloud-cluster c-near-1" viewBox="0 0 800 240" fill="none"><path d="M80 190 C120 130, 210 120, 270 150 C330 90, 460 85, 530 135 C590 85, 710 95, 770 160 C800 200, 60 230, 40 210 C30 195, 55 190, 80 190 Z" fill="url(#nearGlow1)"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <svg class="sky-svg-defs" width="0" height="0" aria-hidden="true">
+              <defs>
+                <linearGradient id="farGlow1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#EADCC9" stop-opacity="0.32"/>
+                  <stop offset="35%" stop-color="#9C8EB9" stop-opacity="0.22"/>
+                  <stop offset="80%" stop-color="#3D2947" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#08080A" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="farGlow2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#F4EFEA" stop-opacity="0.28"/>
+                  <stop offset="40%" stop-color="#8E7DA8" stop-opacity="0.18"/>
+                  <stop offset="85%" stop-color="#462E48" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#08080A" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="midGlow1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FAF5EE" stop-opacity="0.52"/>
+                  <stop offset="25%" stop-color="#E4D2C3" stop-opacity="0.42"/>
+                  <stop offset="55%" stop-color="#A58AB0" stop-opacity="0.35"/>
+                  <stop offset="85%" stop-color="#5A3A52" stop-opacity="0.42"/>
+                  <stop offset="100%" stop-color="#08080A" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="midGlow2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#F5ECE0" stop-opacity="0.46"/>
+                  <stop offset="30%" stop-color="#D9B7B5" stop-opacity="0.38"/>
+                  <stop offset="60%" stop-color="#8F78A3" stop-opacity="0.32"/>
+                  <stop offset="90%" stop-color="#4F304B" stop-opacity="0.38"/>
+                  <stop offset="100%" stop-color="#08080A" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="nearGlow1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF8F0" stop-opacity="0.38"/>
+                  <stop offset="30%" stop-color="#E2C1B8" stop-opacity="0.32"/>
+                  <stop offset="65%" stop-color="#7B658A" stop-opacity="0.22"/>
+                  <stop offset="95%" stop-color="#2D1D38" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#08080A" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="sky-vignette-bottom"></div>
+          </div>
+
+          <div class="hero-inner section-pad">
+            <div class="hero-copy reveal">
             <div class="eyebrow">
               <span class="status-dot" aria-hidden="true"></span>
               Available for summer 2027 collaborations
@@ -175,16 +271,13 @@
             </div>
             <div class="hero-stamp" aria-hidden="true"><span>scroll to<br />explore</span><span class="stamp-arrow">↓</span></div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <div class="section-rule" aria-hidden="true"></div>
 
         <!-- ABOUT -->
-        <section id="about" class="about section-pad" aria-labelledby="about-title">
-          <div class="section-heading reveal">
-            <span class="section-number">01</span>
-            <h2 id="about-title">A little <em>about</em> me</h2>
-          </div>
+        <section id="about" class="about section-pad" aria-label="About Akshay">
           <div class="about-grid">
             <div class="about-left reveal reveal-delay-1">
               <div class="about-lead">
@@ -234,17 +327,10 @@
             </div>
             <div class="about-interactive-pane reveal reveal-delay-2">
               <div class="interactive-human-card">
-                <div class="interactive-human-header">
-                  <div class="interactive-human-pill">
-                    <span class="interactive-pulse"></span>
-                    <span class="interactive-title">DITHER VEIL // INTERACTIVE</span>
-                  </div>
-                  <span class="interactive-gesture-hint">Hover &amp; Click to interact</span>
-                </div>
                 <div class="interactive-human-viewport">
                   <iframe
                     src="/interactive-human/index.html"
-                    title="Interactive 3D Dither Canvas"
+                    title="Interactive Dither Portrait"
                     class="interactive-human-frame"
                     loading="lazy"
                   ></iframe>
@@ -306,90 +392,37 @@
 
             <article class="project-card project-card-feature reveal" id="project-intelligap" data-tech="python ai react api git">
               <div class="project-meta">
-                <span>01 / AI Web App</span>
+                <span>01 / FEATURED SYSTEM · AI WEB APP</span>
                 <span>2026</span>
               </div>
-              <div class="project-body">
-                <div class="project-text">
-                  <h3>IntelliGap<em>.AI</em></h3>
-                  <p>A skill-gap analyser that takes a user's current skills and a target job role, then uses AI to generate a personalised learning roadmap — showing exactly what to learn and in what order.</p>
-                  <div class="project-detail-row">
-                    <div class="project-tags">
-                      <span class="p-tag" data-tech="python">Python</span>
-                      <span class="p-tag" data-tech="ai">AI / LLM</span>
-                      <span class="p-tag" data-tech="ai">LangChain</span>
-                      <span class="p-tag" data-tech="react">React</span>
-                      <span class="p-tag" data-tech="api">REST API</span>
-                    </div>
-                    <div class="project-links">
-                      <a href="https://github.com/akshaydoingthings" target="_blank" rel="noreferrer" class="project-link-small">GitHub ↗</a>
-                    </div>
+              <div class="project-feature-layout">
+                <div class="project-feature-main">
+                  <h3>IntelliGap<em class="intelligap-ai" tabindex="0" role="text" aria-label="AI">.AI</em></h3>
+                  <p class="project-feature-desc">A skill-gap analyser that takes a user's current skills and a target job role, then uses AI to generate a personalised learning roadmap — showing exactly what to learn and in what order.</p>
+                  <div class="project-tags">
+                    <span class="p-tag" data-tech="python">Python</span>
+                    <span class="p-tag" data-tech="ai">AI / LLM</span>
+                    <span class="p-tag" data-tech="ai">LangChain</span>
+                    <span class="p-tag" data-tech="react">React</span>
+                    <span class="p-tag" data-tech="api">REST API</span>
                   </div>
                 </div>
-                <a class="project-arrow" href="https://github.com/akshaydoingthings" target="_blank" rel="noreferrer" aria-label="View IntelliGap.AI on GitHub">↗</a>
-              </div>
-
-              <!-- Interactive Simulator Card -->
-              <div class="project-simulator-card" id="intelligap-sim" aria-label="Interactive IntelliGap.AI Live Roadmap Simulation">
-                <div class="sim-header">
-                  <div class="sim-badge">
-                    <span class="sim-pulse" aria-hidden="true"></span>
-                    <span>Live Simulator Demo</span>
-                  </div>
-                  <span class="sim-hint">Select a target career:</span>
-                  <div class="sim-role-picker" role="tablist">
-                    <button type="button" class="sim-role-btn is-active" data-role="ai" role="tab" aria-selected="true">AI / LLM Engineer</button>
-                    <button type="button" class="sim-role-btn" data-role="fullstack" role="tab" aria-selected="false">Full-Stack Dev</button>
-                    <button type="button" class="sim-role-btn" data-role="ml" role="tab" aria-selected="false">ML Specialist</button>
-                  </div>
-                </div>
-                <div class="sim-body">
-                  <div class="sim-metric-row">
-                    <div class="sim-metric-box">
-                      <span class="sim-metric-label">Target Role</span>
-                      <strong class="sim-target-title" id="sim-role-title">Generative AI / LLM Engineer</strong>
+                <div class="project-feature-aside">
+                  <div class="project-spec-list">
+                    <div class="project-spec-item">
+                      <span class="spec-label">Core Engine</span>
+                      <span class="spec-value">Vector Matching &amp; RAG Pipelines</span>
                     </div>
-                    <div class="sim-metric-box sim-match-box">
-                      <span class="sim-metric-label">Calculated Match</span>
-                      <div class="sim-meter-wrap">
-                        <div class="sim-meter-bar"><div class="sim-meter-fill" id="sim-meter-fill" style="width: 78%;"></div></div>
-                        <span class="sim-meter-val" id="sim-match-val">78%</span>
-                      </div>
+                    <div class="project-spec-item">
+                      <span class="spec-label">Objective</span>
+                      <span class="spec-value">Personalized Learning Milestones</span>
                     </div>
                   </div>
-                  <div class="sim-gap-row">
-                    <span class="sim-gap-label">Identified High-Priority Gaps:</span>
-                    <div class="sim-gap-tags" id="sim-gaps">
-                      <span class="sim-gap-pill">Vector DBs (Chroma/Milvus)</span>
-                      <span class="sim-gap-pill">LangChain &amp; RAG Pipelines</span>
-                      <span class="sim-gap-pill">LLM Evals &amp; Guardrails</span>
-                    </div>
-                  </div>
-                  <div class="sim-roadmap-timeline">
-                    <span class="sim-roadmap-heading">AI-Generated Curriculum Sequence:</span>
-                    <div class="sim-timeline-steps" id="sim-steps">
-                      <div class="sim-step is-complete">
-                        <span class="step-dot" aria-hidden="true">✔</span>
-                        <div class="step-info">
-                          <strong>Phase 1: Foundations (Mastered)</strong>
-                          <span>Python, Embeddings &amp; Tokenization</span>
-                        </div>
-                      </div>
-                      <div class="sim-step is-active">
-                        <span class="step-dot" aria-hidden="true">➜</span>
-                        <div class="step-info">
-                          <strong>Phase 2: RAG Architecture (In Progress)</strong>
-                          <span>Semantic chunking, Vector indexing, Re-ranking</span>
-                        </div>
-                      </div>
-                      <div class="sim-step">
-                        <span class="step-dot" aria-hidden="true">○</span>
-                        <div class="step-info">
-                          <strong>Phase 3: Production Serving</strong>
-                          <span>FastAPI async streaming, Caching, Telemetry</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="project-feature-actions">
+                    <a href="https://github.com/akshaydoingthings" target="_blank" rel="noreferrer" class="project-feature-btn">
+                      <span>View on GitHub</span>
+                      <span class="btn-arrow" aria-hidden="true">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -470,20 +503,16 @@
           </div>
         </section>
 
-      </main>
+        <!-- INTERACTIVE SIGNATURE (NO HEADING) -->
+        <section class="tech-text-section" id="tech-text-section" aria-label="Interactive Signature Banner">
+          <div class="tech-text-wrapper">
+            <div id="tech-text-container" class="tech-text" role="img" aria-label="AKSHAY KUMAR">
+              <canvas id="tech-text-canvas" class="tech-text-canvas"></canvas>
+            </div>
+          </div>
+        </section>
 
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <a class="wordmark" href="#top" aria-label="akshay. — back to top">
-          <span class="wordmark-mark" aria-hidden="true">{·</span><span>akshay<span class="wordmark-dot">.</span></span>
-        </a>
-        <p>© <span data-year>2026</span> Akshay Kumar. Built with curiosity.</p>
-        <div class="footer-links">
-          <a href="https://github.com/akshaydoingthings" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/akshay-kumar-a65b7136a/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="mailto:contact@akshaykumar.dev">Email</a>
-        </div>
-      </footer>
+      </main>
 
       <!-- FLOATING BACK TO TOP WITH PROGRESS RING -->
       <button class="back-to-top" id="back-to-top" aria-label="Scroll back to top" title="Back to top">
@@ -494,6 +523,7 @@
         <span class="back-to-top-arrow" aria-hidden="true">↑</span>
       </button>
     </div>
+    <canvas id="crosshair-canvas" aria-hidden="true"></canvas>
     <script src="/script.js"></script>
   </body>
 </html>
